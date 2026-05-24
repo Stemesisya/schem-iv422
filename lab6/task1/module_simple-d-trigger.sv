@@ -1,6 +1,6 @@
 // task 1
 
-module flop(
+module module_flop(
     input logic clk,
     input logic d,
     output logic q
