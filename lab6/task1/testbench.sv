@@ -14,7 +14,7 @@ module test();
 	initial begin
         tick = 1;
         d = 0; // Сбрасываем триггер, чтобы он показывал 0, а не X
-		$readmemb ("task1/test.txt", testvectors);
+		$readmemb ("lab6/task1/test.txt", testvectors);
 		testIndex =0;
 		errors=0;
 		reset =1; #27; reset=0;
