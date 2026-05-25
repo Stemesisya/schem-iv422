@@ -19,6 +19,13 @@ bit_adder a3(.sum(sum[2]), .c_out(c_out2),  .a(a[2]), .b(b[2]), .c_in(c_out1));
 bit_adder a4(.sum(sum[3]), .c_out(c_out),  .a(a[3]), .b(b[3]), .c_in(c_out2));
 endmodule
 
+module zeroExtend(
+    input logic in,
+    output logic [3:0] out
+);
+assign out = 4'b0000 | in;
+endmodule
+
 module alu(
     input logic [3:0] a, rawb,
     input logic [2:0] funcsel,
@@ -28,17 +35,19 @@ module alu(
 logic [3:0] b;
 logic [3:0] sum;
 logic c_out;
+logic [3:0] sltResult;
 
-assign b = rawb;
+assign b = funcsel[2] ? ~rawb : rawb;
 
-adder adderr(.a(a), .b(b), .sum(sum), .c_out(c_out), .c_in(1'b0));
+adder adderr(.a(a), .b(b), .sum(sum), .c_out(c_out), .c_in(funcsel[2]));
+zeroExtend ze(.in(sum[2]), .out(sltResult));
 
 always_comb begin
     case (funcsel[1:0])
         2'b00: result = a & b;
         2'b01: result = a | b;
         2'b10: result = sum;
-        2'b11: result = 4'b0000;
+        2'b11: result = funcsel[2] ? sltResult : 4'bxxxx;
         default: result = 4'b0000;
     endcase
 end
