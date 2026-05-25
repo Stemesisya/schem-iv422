@@ -43,11 +43,15 @@ module alu(
 );
 
 logic [3:0] b;
-assign b = 1
+assign b = rawb;
 
 always_comb begin
     case (funcsel[1:0])
-        default: 
+        2'b00: result = a & b;
+        2'b01: result = a | b;
+        2'b10: result = a + b;
+        2'b11: result = 4'b0000;
+        default: result = 4'b0000;
     endcase
 end
 
