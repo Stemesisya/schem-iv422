@@ -43,7 +43,7 @@ module tb_counter4_l();
         #300;
         button = 0;
         #20;
-        $display("Test 3 - After counting: q=%b (Expected: 0111)", q);
+        $display("Test 3 - After counting: q=%b (Expected: 0110)", q);
         
         // Загрузка значения 10
         load = 1;
@@ -64,7 +64,7 @@ module tb_counter4_l();
         #300;
         button = 0;
         #20;
-        $display("Test 5 - After counting: q=%b (Expected: 1110)", q);
+        $display("Test 5 - After counting: q=%b (Expected: 1100)", q);
         
         // Загрузка значения 15
         load = 1;
