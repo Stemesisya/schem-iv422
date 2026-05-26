@@ -3,7 +3,7 @@ module antitinkling (
     input logic clk,
     input logic reset,
     output logic out
-);
+    );
 
     logic c;
     logic [19:0] q;
@@ -16,7 +16,6 @@ module antitinkling (
         else q <= q + 1;
 
     assign c = (q == 20'hFFFFF);
-
 endmodule
 
 
@@ -29,9 +28,9 @@ module counter4b (
 );
     logic button;
 
-    antitinkling at(rawButton, clk, reset, clkInternal);
+    antitinkling at(.button(rawButton), .clk(clk), .reset(reset), .out(button));
 
-    always_ff @(posedge button) begin
+    always_ff @(posedge button, posedge reset) begin
         if (reset)q <= 0;
         else q <= q + 1;
     end
