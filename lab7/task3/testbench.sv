@@ -80,8 +80,6 @@ module tb_counter4_l();
         reset = 1;
         #10;
         $display("Test 7 - After reset: q=%b (Expected: 0000)", q);
-        
-        $display("=== TESTS COMPLETE ===");
         $stop;
     end
     
