@@ -21,7 +21,7 @@ module module_impulse_redistributor(
 );
 
 logic d;
-assign d = ~out[0] & ~out[1] & ~out[2] & ~out[3];
+assign d = (~out[1] & ~out[2] & ~out[3]) | out[0];
 
 module_flop_r f1(.clk(clk), .reset(reset), .d(  d   ), .q(out[3]));
 module_flop_r f2(.clk(clk), .reset(reset), .d(out[3]), .q(out[2]));

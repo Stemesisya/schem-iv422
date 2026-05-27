@@ -1,9 +1,10 @@
 // a[4] rawb[4] funcsel[3] result[4] overflow isZero, isNegative
 
+// funcsel values:
 // 000 A & B
 // 001 A | B
 // 010 A + B
-// 011 -
+// 011 <nothing>
 // 100 A & ~B
 // 101 A | ~B
 // 110 A - B
